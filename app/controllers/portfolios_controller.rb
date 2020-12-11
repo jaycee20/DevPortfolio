@@ -3,12 +3,19 @@ class PortfoliosController < ApplicationController
     @portfolio_item = Portfolio.all
   end
 
+  def angular
+    @portfolio_item = Portfolio.angular
+  end
+
   def new
     @portfolio_item = Portfolio.new
+    3.times { @portfolio_item.technologies.build }
   end
 
   def create
-    @portfolio_items = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :boddy))
+    @portfolio_items = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :boddy,
+      technologies_attributes: [:name]))
+
     respond_to do |format|
       if @portfolio_items.save
         format.html { redirect_to portfolios_path, notice: 'Your portfolio item is now live' }
