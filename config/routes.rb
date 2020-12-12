@@ -14,8 +14,6 @@ Rails.application.routes.draw do
     end
   end
 
-
-
   # Set root home page for site
   root to: 'pages#home'
 
