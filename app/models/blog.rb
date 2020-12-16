@@ -15,6 +15,4 @@ class Blog < ApplicationRecord
     limit(2)
   end
 
-
-
 end
